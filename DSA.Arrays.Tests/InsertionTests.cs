@@ -36,5 +36,22 @@ namespace DSA.Arrays.Tests
 
             Assert.Equal(resultArray[position - 1], element);
         }
+
+        [Fact]
+        public static void InsertAtEnd_Should_Provide_Correct_Result() 
+        {
+            //Arrange
+            int[] arr = {10,20,30,40 };
+            int element = 50;
+
+            //Act
+            int[] resultArray = InsertAtEnd.Insert(arr, element);
+
+            //Assert
+            Assert.Equal(resultArray[resultArray.Length - 1], element);
+
+        }
+
+
     }
 }
