@@ -22,5 +22,19 @@ namespace DSA.Arrays.Tests
             Assert.Equal(firstResultArray[0], valueToInsert);
             Assert.Equal(secondResultArray[0], valueToInsert);
         }
+        [Fact]
+        public static void InsertAtGivePosition_Should_Return_Correct_Array() 
+        {
+            //Arrange
+            int[] arr = { 10, 20, 30, 40 };
+            int position = 2;
+            int element = 50;
+            
+            //Act
+            //output array= {10,50,20,30,40};
+            int[] resultArray = InsertAtGivenPosition.Insert(arr, position, element);
+
+            Assert.Equal(resultArray[position - 1], element);
+        }
     }
 }
