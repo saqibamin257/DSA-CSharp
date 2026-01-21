@@ -15,7 +15,7 @@ namespace DSA.Arrays.Insertion
             if (position < 1 || position > arr.Length + 1)
                 throw new ArgumentOutOfRangeException(nameof(position));
 
-            //create new arr with n+1 size of give array.
+            //create new arr with n+1 size of given array.
             int[] resultArray = new int [arr.Length+1];
             
             //insertedIndex
