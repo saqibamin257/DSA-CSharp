@@ -9,13 +9,18 @@ namespace DSA.Arrays.Deletion
         public static int[] Delete(int[] arr) 
         {
             //int[] arr = { 10, 20, 30, 40 };
-            int n = arr.Length;
-            for (int i = 1; i < n; i++) 
+            
+            //input validation
+            if (arr == null || arr.Length == 0)
+                return arr;
+
+            int[] resultArray = new int[arr.Length - 1];
+            for (int i = 1; i < arr.Length; i++) 
             {
-                arr[i - 1] = arr[i];
+                resultArray[i-1] = arr[i];
             }
-            n--;
-            return arr;
+            
+            return resultArray;
         }
     }
 }

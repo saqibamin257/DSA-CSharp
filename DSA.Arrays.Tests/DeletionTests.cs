@@ -35,5 +35,34 @@ namespace DSA.Arrays.Tests
             Assert.Equal(resultArray[1], arr[2]);
         }
 
+        [Fact]
+        public static void DeleteFirstOccurenceOfGivenElement_Should_Run_Without_Error()
+        {
+            //Arrange
+            int[] arr = { 10, 20, 30, 40,20 };
+            int element = 20;
+            //Act
+
+            int[] resultArray = DeleteFirstOccuranceOfGivenElement.Delete(arr, element);
+
+            //Assert
+            Assert.Equal(resultArray.Length, arr.Length - 1);
+            Assert.NotEqual(resultArray[1], element);
+        }
+
+        [Fact]
+        public static void DeleteFirstOccurenceOfGivenElement_Should_Return_OriginalArray_WhenElement_Is_Not_In_Array()
+        {
+            //Arrange
+            int[] arr = { 10, 20, 30, 40, 20 };
+            int element = 200;
+            //Act
+
+            int[] resultArray = DeleteFirstOccuranceOfGivenElement.Delete(arr, element);
+
+            //Assert
+            Assert.Equal(arr, resultArray);
+            Assert.Equal(resultArray.Length, arr.Length);
+        }
     }
 }
