@@ -55,7 +55,7 @@ namespace DSA.Arrays.Tests
         {
             //Arrange
             int[] arr = { 10, 20, 30, 40, 20 };
-            int element = 200;
+            int element = 20;
             //Act
 
             int[] resultArray = DeleteFirstOccuranceOfGivenElement.Delete(arr, element);
@@ -63,6 +63,25 @@ namespace DSA.Arrays.Tests
             //Assert
             Assert.Equal(arr, resultArray);
             Assert.Equal(resultArray.Length, arr.Length);
+        }
+
+        [Fact]
+        public static void DeleteAllOccurenceOfGivenElement_Should_Run_Without_Error() 
+        {
+            //Arrange
+            int[] arr = { 10, 20, 30, 20, 40, 50, 20 };
+            int element = 20;
+            //output={10,30,40,50};
+
+
+            //Act
+            int[] resultArray = DeleteAllOccuranceOfGivenElement.Delete(arr, element);
+            int[] expectedArrayResult = { 10, 30, 40, 50 };
+
+            //Assert
+            Assert.Equal(resultArray.Length, 4);
+            Assert.DoesNotContain(20, resultArray);
+            Assert.Equal(resultArray, expectedArrayResult);
         }
     }
 }
