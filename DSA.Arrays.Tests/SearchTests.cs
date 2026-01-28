@@ -36,5 +36,38 @@ namespace DSA.Arrays.Tests
             //Assert
             Assert.Equal(expectedIndex, actualIndex);
         }
+        [Fact]
+        public static void BinarySearch_Iterative_Should_Run_Without_Error()
+        {
+            //Arrange
+            int[] arr = { 10, 20, 30, 40, 50 };
+            int element = 20;
+
+            //Act
+            int result = BinarySearch_Iterative.BinarySearch(arr, element);
+
+            //Assert
+            Assert.Equal(1, result);
+
+        }
+
+        [Fact]
+        public static void BinarySearch_Recursive_Should_Run_Without_Error()
+        {
+            //Arrange
+            int[] arr = { 10, 20, 30, 40, 50 };
+            int element = 20;
+            int low = 0;
+            int high = arr.Length - 1;
+
+            //Act
+            int result = BinarySearch_Recursive.BinarySearch(arr,low,high, element);
+
+            //Assert
+            Assert.Equal(1, result);
+
+        }
+
+
     }
 }

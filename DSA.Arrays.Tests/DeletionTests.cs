@@ -90,7 +90,7 @@ namespace DSA.Arrays.Tests
             //Arrange
             int[] arr = { 10, 20, 30, 40 };
             int lastElement = arr[arr.Length - 1];
-
+            
             //Act
             int[] resultArray = DeleteLastElementOfArray.Delete(arr);
             int[] expectedArray = arr.Where(x => x != lastElement).ToArray();

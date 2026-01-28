@@ -19,6 +19,6 @@ namespace DSA.Arrays.Searching
                 }               
             }
             return -1;
-        }
+        }        
     }
 }
