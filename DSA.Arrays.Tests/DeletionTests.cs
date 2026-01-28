@@ -83,5 +83,21 @@ namespace DSA.Arrays.Tests
             Assert.DoesNotContain(20, resultArray);
             Assert.Equal(resultArray, expectedArrayResult);
         }
+
+        [Fact]
+        public static void DeleteLastElementOfArray_Should_Without_Error() 
+        {
+            //Arrange
+            int[] arr = { 10, 20, 30, 40 };
+            int lastElement = arr[arr.Length - 1];
+
+            //Act
+            int[] resultArray = DeleteLastElementOfArray.Delete(arr);
+            int[] expectedArray = arr.Where(x => x != lastElement).ToArray();
+
+            //Assert             
+
+            Assert.Equal(resultArray, expectedArray);
+        }
     }
 }
