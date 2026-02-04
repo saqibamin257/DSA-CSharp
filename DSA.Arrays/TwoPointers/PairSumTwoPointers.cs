@@ -8,7 +8,7 @@ namespace DSA.Arrays.TwoPointers
     {
         public static bool HasPairWithSum(int[] arr, int target) 
         {
-            //consider input array is alway a sorted array
+            //consider input array is always a sorted array
 
             //Input validation
             if (arr == null ||arr.Length < 2 )
