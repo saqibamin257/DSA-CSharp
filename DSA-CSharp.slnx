@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <File Path="ImportantAlgorithmPatterns.txt" />
     <Project Path="DSA.Arrays/DSA.Arrays.csproj" />
     <Project Path="DSA.Runner/DSA.Runner.csproj" />
   </Folder>

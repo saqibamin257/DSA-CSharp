@@ -1,0 +1,7 @@
+1- Arrays -->  Deletion  ----> DeleteAtGivenPosition  (use of continue inside loop to skip next statement).
+
+2- Arrays -->  Deletion  ----> DeleteAllOccuranceOfGivenElement (checking number of occurance of given number in an array to create new resultArray with required length).
+
+3- TwoPointers ---> PairSumTwoPointers.
+
+4- MediumLevel ---> ReverseStringTwoPointers.

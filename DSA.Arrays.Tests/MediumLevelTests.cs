@@ -40,5 +40,28 @@ namespace DSA.Arrays.Tests
             Assert.Equal(result, expectedString);
 
         }
+
+        
+        [Theory]
+        [InlineData("MADAM",true)]
+        [InlineData("SAS", true)]
+        [InlineData("RADAR", true)]
+        [InlineData("NOON", true)]
+        [InlineData("LEVEL", true)]
+        [InlineData("HELLO", false)]
+        [InlineData("WORLD", false)]
+        public static void CheckPalindromeByTwoPointer_Should_Run_Successfully(string str, bool expected) 
+        {
+            //Arrange
+            //string str = "MADAM";
+
+            //Act
+            bool result = CheckPalindrome.PalindromeByTwoPointers(str);
+
+
+            //Assert
+            Assert.Equal(result, expected);
+        }
+
     }
 }
