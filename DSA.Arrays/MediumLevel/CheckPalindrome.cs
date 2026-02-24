@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace DSA.Arrays.MediumLevel
@@ -55,14 +56,14 @@ namespace DSA.Arrays.MediumLevel
         public static bool PalindromeByTwoPointers(string str)
         {
             //Input validation
-            if (str==null)
+            if (str == null)
                 return false;
 
-            
-            int start = 0;
-            int end = str.Length - 1;            
 
-            
+            int start = 0;
+            int end = str.Length - 1;
+
+
             while (start < end)
             {
                 if (char.ToLower(str[start]) != char.ToLower(str[end]))
@@ -73,9 +74,50 @@ namespace DSA.Arrays.MediumLevel
                     end--;
                 }
             }
-            return true;            
+            return true;
         }
         //Time Complexity: O(n)
         //Space Complexity: O(1)
+        
+        
+        
+        
+        //------------------Advance Approach ------------------------//
+        // "A man, a plan, a canal: Panama"
+        // 1- Check if the character on left side is not Letter or Digit then Start++, Same with Right side End--.
+
+        public static bool Advance_PalindromeByTwoPointer(string str)
+        {
+            if (str == null)
+                return false;
+            
+            int start = 0;
+            int end = str.Length - 1;
+
+            while (start < end) 
+            {
+                if (!char.IsLetterOrDigit(str[start])) 
+                {
+                    start++;
+                    continue;
+                }
+                if (!char.IsLetterOrDigit(str[end]))
+                {
+                    end--;
+                    continue;
+                }
+                if (char.ToLower(str[start]) != char.ToLower(str[end])) 
+                {
+                    return false;
+                }
+                start++;
+                end--;
+            }
+            return true;            
+        }
     }
 }
+
+
+
+
