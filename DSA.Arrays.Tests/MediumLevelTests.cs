@@ -138,5 +138,20 @@ namespace DSA.Arrays.Tests
 
         }
 
+        [Fact]
+        public static void MergeTwoArrays_Should_Run_Successfully() 
+        {
+            //Arrange
+            int[] arr1 = [1, 4, 7];
+            int[] arr2 = [2, 3, 6];
+            int[] expectedArray = [1, 2, 3, 4, 6, 7];
+
+            //Act
+            int[] resultArray = MergeTwoArrays.Merge(arr1, arr2);
+
+            //Assert
+            Assert.Equal(expectedArray, resultArray);
+        }
+
     }
 }
