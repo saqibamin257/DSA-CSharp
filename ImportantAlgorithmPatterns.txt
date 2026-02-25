@@ -5,3 +5,4 @@
 3- TwoPointers ---> PairSumTwoPointers.
 
 4- MediumLevel ---> ReverseStringTwoPointers.
+5- MediumLevel ---> RemoveDuplicateFromSortedArray(In C#, || short-circuits—if the left condition is true, the right side is not evaluated, preventing errors like accessing arr[j - 1] when j = 0.)

@@ -1,6 +1,7 @@
 ﻿using DSA.Arrays.MediumLevel;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace DSA.Arrays.Tests
@@ -92,5 +93,50 @@ namespace DSA.Arrays.Tests
             Assert.Equal(result, expected);
 
         }
+        [Fact]
+        public static void MoveAllZerosToEnd_Should_Run_Successfully() 
+        {
+            //Arrange
+            int[] arr = [0,10,20,0,30,0,40];
+            int[] expectedResult = [10, 20, 30, 40, 0, 0, 0];
+
+            //Act
+            int[] result = MoveAllZerosToEnd.MoveZeros(arr);
+
+            //Assert
+            
+            Assert.Equal(result, expectedResult);
+        }
+
+        [Fact]
+        public static void MoveAllZerosToEnd_ImprovedVersion_Should_Run_Successfully()
+        {
+            //Arrange
+            int[] arr = [0, 10, 20, 0, 30, 0, 40];
+            int[] expectedResult = [10, 20, 30, 40, 0, 0, 0];
+
+            //Act
+            int[] result = MoveAllZerosToEnd.MoveZeros_ImprovedVersion(arr);
+
+            //Assert
+
+            Assert.Equal(result, expectedResult);
+        }
+
+        [Fact]
+        public static void RemoveDuplicateFromSortedArray_Should_Run_Successful()
+        {
+            //Arrange
+            int[] arr = [10,10,20,30,30,40,50,50,50];
+            int[] expectedResultArray = [10, 20, 30, 40, 50];
+
+            //Act
+            int[] resultArray = RemoveDuplicateFromSortedArray.Remove(arr);
+
+            //Assert
+            Assert.Equal(expectedResultArray, resultArray);
+
+        }
+
     }
 }
