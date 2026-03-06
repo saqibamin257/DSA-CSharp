@@ -90,5 +90,48 @@ namespace DSA.Arrays.TwoPointers
             return closestSum;
         }
 
+
+        public class SumWithPair 
+        {
+            public int Sum { get; set; }
+            public string Pair { get; set; } //(2,3) 
+        }
+
+        public static SumWithPair FindPairWithClosestSum(int[] arr, int target)
+        {
+
+            //arr = [-10,-5,-2]   -12,-15,-7
+            //target = -3
+            //output = -7(sum) , -5,-2 (pair)
+
+            //input validation
+            if (arr is null || arr.Length == 0)
+                return null;
+
+
+            SumWithPair pair = new SumWithPair();
+            int left = 0, right = arr.Length - 1;
+            int closestSum = arr[left] + arr[right];
+
+            while (left < right)
+            {
+                int sum = arr[left] + arr[right];   //52
+                if (Math.Abs(closestSum - target) > Math.Abs(sum - target))
+                    // 2    //1
+                {
+                    closestSum = sum;
+                    pair.Sum = sum;
+                    pair.Pair = $"({arr[left]},{arr[right]})";
+                }                   
+                                       
+
+                if (sum < target)
+                    left++;
+                else
+                    right--;
+            }
+            return pair;
+        }
+
     }
 }
