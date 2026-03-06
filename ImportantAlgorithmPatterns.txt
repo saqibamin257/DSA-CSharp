@@ -6,3 +6,5 @@
 
 4- MediumLevel ---> ReverseStringTwoPointers.
 5- MediumLevel ---> RemoveDuplicateFromSortedArray(In C#, || short-circuits—if the left condition is true, the right side is not evaluated, preventing errors like accessing arr[j - 1] when j = 0.)
+6- Two Pointers ---> ClosesPairSum (Math.Abs logic to find closest difference b/w pairs)
+7- Sorting     ---> SortingSongDescendingOrder (used linq for sorting in descending order and important input parameter logic as class object to pass more than 1 parameter)

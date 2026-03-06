@@ -55,6 +55,38 @@ namespace DSA.Arrays.Tests
             Assert.Equal(pairs, true);
         }
 
+        [Fact]
+        public static void FindClosestPairSumUnderTarget_Should_Run_Without_Error() 
+        {
+            //Arrange
+            int[] arr = [10, 22, 28, 29, 30, 40];
+            int target = 54;
+
+            //Act
+            int result = ClosestPairSum.FindClosestPairSumUnderTarget(arr, target);
+            int expectedResult = 52;
+            
+            
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+
+        [Fact]
+        public static void CLosestPairSum_Should_Run_Without_Error()
+        {
+            //Arrange
+            int[] arr = [-10, -5, -2];
+            int target = -3;
+
+            //Act
+            int result = ClosestPairSum.FindClosestPairSum(arr, target);
+            int expectedResult = -7;
+
+
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
 
     }
 }
