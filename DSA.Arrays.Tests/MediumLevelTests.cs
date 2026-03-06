@@ -153,5 +153,37 @@ namespace DSA.Arrays.Tests
             Assert.Equal(expectedArray, resultArray);
         }
 
+
+
+        [Fact]
+        public static void SquareOfSortedArray_By_BruteForce_Should_Run_Successfully()
+        {
+            //Arrange
+            int[] arr = [-4,-1,0,3,10];            
+            int[] expectedArray = [0, 1, 9, 16, 100];
+
+            //Act
+            int[] resultArray = SquaresOfSortedArray.square_ByBruteForce(arr);
+
+            //Assert
+            Assert.Equal(expectedArray, resultArray);
+        }
+
+
+        [Fact]
+        public static void SquareOfSortedArray_By_TwoPointer_Should_Run_Successfully()
+        {
+            //Arrange
+            int[] arr = [-4, -1, 0, 3, 10];
+            int[] expectedArray = [0, 1, 9, 16, 100];
+
+            //Act
+            int[] resultArray = SquaresOfSortedArray.square_TwoPointers(arr);
+
+            //Assert
+            Assert.Equal(expectedArray, resultArray);
+        }
+
+
     }
 }
