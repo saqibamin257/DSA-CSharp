@@ -8,12 +8,17 @@ namespace DSA.LinqEFCore.Data
 {
     public class AppDBContext:DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        public AppDBContext(DbContextOptions<AppDBContext> options)
+        : base(options)
         {
-            options.UseSqlServer(
-                "Server=localhost\\SQLEXPRESS;Database=EFCoreLinqPracticeDb;Trusted_Connection=True;TrustServerCertificate=True");
         }
+
+        public DbSet<Customer> Customers { get; set; }
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //{
+        //    options.UseSqlServer(
+        //        "Server=localhost\\SQLEXPRESS;Database=EFCoreLinqPracticeDb;Trusted_Connection=True;TrustServerCertificate=True");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

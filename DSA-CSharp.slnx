@@ -7,5 +7,6 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="DSA.Arrays.Tests/DSA.Arrays.Tests.csproj" />
+    <Project Path="DSA.LinqEFCore.Tests/DSA.LinqEFCore.Tests.csproj" Id="55940eff-0d4b-4522-9abc-52bccd247d1c" />
   </Folder>
 </Solution>
