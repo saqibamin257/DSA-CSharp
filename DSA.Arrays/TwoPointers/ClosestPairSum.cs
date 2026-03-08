@@ -122,8 +122,7 @@ namespace DSA.Arrays.TwoPointers
                     closestSum = sum;
                     pair.Sum = sum;
                     pair.Pair = $"({arr[left]},{arr[right]})";
-                }                   
-                                       
+                }                      
 
                 if (sum < target)
                     left++;
