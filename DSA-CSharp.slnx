@@ -2,6 +2,7 @@
   <Folder Name="/src/">
     <File Path="ImportantAlgorithmPatterns.txt" />
     <Project Path="DSA.Arrays/DSA.Arrays.csproj" />
+    <Project Path="DSA.LinqEFCore/DSA.LinqEFCore.csproj" Id="3e26ab3e-2e00-4cab-ba42-43b8d295a769" />
     <Project Path="DSA.Runner/DSA.Runner.csproj" />
   </Folder>
   <Folder Name="/tests/">
