@@ -41,5 +41,39 @@ namespace DSA.LinqEFCore.Queries
 
             return customers;            
         }
+        public Customer GetCustomerByEmail(string email) 
+        {
+            var customer = context.Customers
+                          .Where(x => x.Email == email)
+                          .FirstOrDefault();
+            
+            return customer;
+        }
+
+        public List<CustomerBasicInformation> GetCustomerInfoByProjection()
+        {
+            var customers = context.Customers
+                           .Select(x => new CustomerBasicInformation
+                           {
+                               Name = $"{x.FirstName} {x.FirstName}",
+                               Email = x.Email,
+                               City = x.City
+                           })
+                           .ToList();        
+            return customers;
+        }
+
+        public class CustomerBasicInformation() 
+        {
+            public string Name { get; set; }
+            public string Email { get; set; }
+            public string City { get; set; }
+        }
+
+        public int CountCustomers() 
+        {
+            int total = context.Customers.Count();
+            return total;
+        }
     }
 }

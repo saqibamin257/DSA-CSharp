@@ -11,6 +11,8 @@ namespace DSA.LinqEFCore.Configurations
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
+            builder.ToTable("Customers");
+
             builder.HasKey(x => x.Id)
                    .HasName("PK_Customer_Id");
 
@@ -35,6 +37,16 @@ namespace DSA.LinqEFCore.Configurations
             builder.Property(x => x.CreatedDate)
                 .HasDefaultValueSql("GETUTCDATE()")
                 .ValueGeneratedOnAdd();
+
+            builder.Property(x => x.IsActive)
+            .HasDefaultValue(true);
+
+            builder.HasMany(x => x.Orders)
+                .WithOne(o => o.Customer)
+                .HasForeignKey(o => o.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
         }
     }
 }
