@@ -11,7 +11,7 @@ namespace DSA.LinqEFCore.Tests
     {
         public static AppDBContext Create()
         {
-            var connection = new SqliteConnection("Filename=:memory:");
+            var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
 
             var options = new DbContextOptionsBuilder<AppDBContext>()

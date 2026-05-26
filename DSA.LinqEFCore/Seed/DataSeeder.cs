@@ -11,11 +11,11 @@ namespace DSA.LinqEFCore.Seed
     {
         public static void SeedAll(AppDBContext context) 
         {
-            context.Database.Migrate();
+            //context.Database.Migrate();
             SeedCustomer(context);
             SeedCategories(context);
+            SeedProducts(context);   // must come before Orders
             SeedOrders(context);
-            SeedProducts(context);
         }
         public static void SeedCustomer(AppDBContext context)
         {
@@ -100,12 +100,15 @@ namespace DSA.LinqEFCore.Seed
                 if (context.Orders.Any())
                     return;
 
+                var ali = context.Customers.First(x => x.Email == "ali@gmail.com");
+                var sara = context.Customers.First(x => x.Email == "sara@gmail.com");
+
                 var orders = new List<Order>
             {
                 new Order
                 {
                     
-                    CustomerId = 1,
+                    CustomerId = ali.Id,
                     OrderDate = DateTime.UtcNow.AddDays(-5),
                     Status = "Completed",
                     TotalAmount = 1650,
@@ -133,7 +136,7 @@ namespace DSA.LinqEFCore.Seed
                 new Order
                 {
                     
-                    CustomerId = 2,
+                    CustomerId = sara.Id,
                     OrderDate = DateTime.UtcNow.AddDays(-3),
                     Status = "Completed",
                     TotalAmount = 845,
@@ -161,7 +164,7 @@ namespace DSA.LinqEFCore.Seed
                         new Order
                         {
                             
-                            CustomerId = 1,
+                            CustomerId = ali.Id,
                             OrderDate = DateTime.UtcNow.AddDays(-1),
                             Status = "Pending",
                             TotalAmount = 95,
