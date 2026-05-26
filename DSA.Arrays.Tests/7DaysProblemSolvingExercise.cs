@@ -83,8 +83,94 @@ namespace DSA.Arrays.Tests
             //Assert.Equal(true, result);
             Assert.Equal(expectedResult,result);
         }
+        
+        public static IEnumerable<object[]> TwoSumTestData =>
+        new List<object[]>
+        {
+            // normal case
+            new object[]
+            {
+                new int[] { 3, 2, 4 },
+                6,
+                new int[] { 1, 2 }
+            },
+
+            // first two numbers
+            new object[]
+            {
+                new int[] { 2, 7, 11, 15 },
+                9,
+                new int[] { 0, 1 }
+            },
+
+            // duplicate numbers
+            new object[]
+            {
+                new int[] { 3, 3 },
+                6,
+                new int[] { 0, 1 }
+            },
+
+            // negative numbers
+            new object[]
+            {
+                new int[] { -1, -2, -3, -4, -5 },
+                -8,
+                new int[] { 2, 4 }
+            },
+            
+            // no solution
+            new object[]
+            {
+                new int[] { 1, 2, 3 },
+                100,
+                Array.Empty<int>()
+            }
+        };
+
+        [Theory]
+        [MemberData(nameof(TwoSumTestData))]
+        public void FindPairOfTwoSum_BruteForce_Should_Return_Expected_Result(int[] arr, int target, int[] expected)
+        {
+            // Act
+            int[] result = TwoSum.FindPairOfTwoSum_BruteForce(arr, target);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
+
+        [Theory]
+        [MemberData(nameof(TwoSumTestData))]
+        public void FindTwoSum_Optimized_Should_Return_Expected_Result(int[] arr, int target, int[] expected)
+        {
+            // Act
+            int[] result =TwoSum.FindTwoSum_Optimized(arr, target);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
 
 
 
+
+        [Theory]
+        [InlineData(new int[] { 1, 2, 3, 0, 5 }, new int[] { 1, 2, 3, 5, 0 })]
+        [InlineData(new int[] { 1, 2, 3, 0, 5, 0, 0,10 }, new int[] { 1, 2, 3, 5, 10, 0, 0, 0})]
+        [InlineData(new int[] { 0, 0, 3, 0, 5, 0, 0, 10 }, new int[] { 3, 5, 10, 0, 0, 0, 0, 0 })]
+        public void MoveZerosToEnd_Shoudld_Run_Successfully(int[] arr, int[] expectedResult)
+        {
+            //arrange
+            //int[] arr = { 1, 2, 3, 4, 5, 5 };
+            //int[] arr2 = { 1, 2, 3, 4, 5 };
+
+            //act
+            //bool result = DuplicateElementInArray.Duplicate(arr);
+            int[] result = MoveZerosToEnd.MoveZeros(arr);
+
+            //assert
+            //Assert.Equal(true, result);
+            Assert.Equal(expectedResult, result);
+        }
     }
 }
