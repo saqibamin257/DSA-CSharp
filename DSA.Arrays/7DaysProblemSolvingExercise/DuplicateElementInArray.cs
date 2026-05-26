@@ -8,6 +8,9 @@ namespace DSA.Arrays._7DaysProblemSolvingExercise
     {
         //return true if any duplicate value occurs in given array
         //arr ={1,2,3,4,2,5}
+
+        //Time Complexity = O(n^2) ----> because of loop into loop
+        //Space Complexity = O(1) 
         public static bool Duplicate(int[] arr) 
         {
             if (arr == null || arr.Length == 0)
@@ -25,21 +28,25 @@ namespace DSA.Arrays._7DaysProblemSolvingExercise
         }
 
 
+        //Time Complexity = O(n) ----> because of single loop
+        //Space Complexity = foreach loop O(n).
+        //                   HashSet operations Contains and Add O(1)
+        //                   Total = O(n) * O(1) = O(n).     
         public static bool Duplicate_By_HashSet(int[] arr) 
         {
             if (arr is null || arr.Length == 0) 
             {
                 throw new ArgumentException("array cannot be null or empty");
             }
-            HashSet<int> UniqueHashSet = new HashSet<int>();
+            HashSet<int> uniqueSet = new HashSet<int>();
             
             foreach(int num in arr) 
             {
-                if (UniqueHashSet.Contains(num)) 
+                if (uniqueSet.Contains(num)) 
                 {
                     return true;
                 }
-                UniqueHashSet.Add(num);
+                uniqueSet.Add(num);
             }
             return false;
         }

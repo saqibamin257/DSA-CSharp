@@ -6,6 +6,8 @@ namespace DSA.Arrays._7DaysProblemSolvingExercise
 {
     public static class FindMaximumNumber_Array
     {
+        //Time Complexity = O(n)
+        //Space Complexity = O(1)
         public static int FindMaximumNumber(int[] arr) 
         {
             if (arr == null || arr.Length == 0)

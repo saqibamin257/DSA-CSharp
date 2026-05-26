@@ -6,6 +6,9 @@ namespace DSA.Arrays._7DaysProblemSolvingExercise
 {
     public static class ReverseArray
     {
+        //Time Complexity = O(n)  --> single for loop
+        //Space Complexity = O(n) --> because of resultArray initialization
+
         public static int[] Reverse(int[] arr) 
         {
             if (arr == null || arr.Length == 0)
@@ -19,6 +22,10 @@ namespace DSA.Arrays._7DaysProblemSolvingExercise
             }
             return resultArray;
         }
+
+        //Time Complexity = O(n) --> n/2 because while (left < right) will run half way but in big O notation n/2 is also represents as O(n).
+        //Space Complexity = O(1) 
+
         public static int[] Reverse_TwoPointersAndSwapping(int[] arr)
         {
               if (arr == null || arr.Length == 0)
