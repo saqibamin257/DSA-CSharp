@@ -9,7 +9,7 @@ namespace DSA.Arrays.Tests
     {
 
         [Fact]
-        public void FindMaximumNumber_Should_Return_Max_Number() 
+        public void FindMaximumNumber_Should_Return_Max_Number()
         {
             //arrange
             int[] arr = { 1, 5, 12, 30, 25 };
@@ -23,7 +23,7 @@ namespace DSA.Arrays.Tests
         }
 
         [Fact]
-        public void ReverseIntegerArray_Should_Run_Successfully() 
+        public void ReverseIntegerArray_Should_Run_Successfully()
         {
             //arrange
             int[] arr = { 1, 2, 3, 4, 5 };
@@ -50,10 +50,10 @@ namespace DSA.Arrays.Tests
         }
 
         [Fact]
-        public void AnyDuplicateValueinArray_Shoudld_Run_Successfully() 
+        public void AnyDuplicateValueinArray_Shoudld_Run_Successfully()
         {
             //arrange
-            int[] arr = { 1, 2, 3, 4, 5,5 };
+            int[] arr = { 1, 2, 3, 4, 5, 5 };
             int[] arr2 = { 1, 2, 3, 4, 5 };
 
             //act
@@ -66,9 +66,9 @@ namespace DSA.Arrays.Tests
         }
 
         [Theory]
-        [InlineData(new int[] {1,2,3,4,5 },false) ]
-        [InlineData(new int[] {1,2,3,3,4,56 },true)]
-        [InlineData(new int[] {2,3,4,5,5,6,0},true)]
+        [InlineData(new int[] { 1, 2, 3, 4, 5 }, false)]
+        [InlineData(new int[] { 1, 2, 3, 3, 4, 56 }, true)]
+        [InlineData(new int[] { 2, 3, 4, 5, 5, 6, 0 }, true)]
         public void Duplicate_By_HashSet_Shoudld_Run_Successfully(int[] arr, bool expectedResult)
         {
             //arrange
@@ -81,9 +81,9 @@ namespace DSA.Arrays.Tests
 
             //assert
             //Assert.Equal(true, result);
-            Assert.Equal(expectedResult,result);
+            Assert.Equal(expectedResult, result);
         }
-        
+
         public static IEnumerable<object[]> TwoSumTestData =>
         new List<object[]>
         {
@@ -145,7 +145,7 @@ namespace DSA.Arrays.Tests
         public void FindTwoSum_Optimized_Should_Return_Expected_Result(int[] arr, int target, int[] expected)
         {
             // Act
-            int[] result =TwoSum.FindTwoSum_Optimized(arr, target);
+            int[] result = TwoSum.FindTwoSum_Optimized(arr, target);
 
             // Assert
             Assert.Equal(expected, result);
@@ -156,7 +156,7 @@ namespace DSA.Arrays.Tests
 
         [Theory]
         [InlineData(new int[] { 1, 2, 3, 0, 5 }, new int[] { 1, 2, 3, 5, 0 })]
-        [InlineData(new int[] { 1, 2, 3, 0, 5, 0, 0,10 }, new int[] { 1, 2, 3, 5, 10, 0, 0, 0})]
+        [InlineData(new int[] { 1, 2, 3, 0, 5, 0, 0, 10 }, new int[] { 1, 2, 3, 5, 10, 0, 0, 0 })]
         [InlineData(new int[] { 0, 0, 3, 0, 5, 0, 0, 10 }, new int[] { 3, 5, 10, 0, 0, 0, 0, 0 })]
         public void MoveZerosToEnd_Shoudld_Run_Successfully(int[] arr, int[] expectedResult)
         {
@@ -172,5 +172,70 @@ namespace DSA.Arrays.Tests
             //Assert.Equal(true, result);
             Assert.Equal(expectedResult, result);
         }
+
+        [Theory]
+        [InlineData(new int[] {1,1,2,2,3,3,3,4,5 },5)]
+        [InlineData(new int[] { 0, 1, 2, 2, 3, 3, 3, 4, 5 }, 6)]
+        [InlineData(new int[] { 1, 1, 2, 2, 3, 3, 3, 4, 5,5,6,6}, 6)]
+        public void RemoveDuplicateFromSortedArray_Using_HashSet_Should_Run_Successfully(int[] arr,int expectedResult) 
+        {
+            //arrange
+            
+
+            //act
+            int result = RemoveDuplicatesFromSortedArray.CountDuplicates_By_HashSet(arr);
+            
+            //assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Theory]
+        [InlineData(new int[] { 1, 1, 2, 2, 3, 3, 3, 4, 5 }, 5)]
+        [InlineData(new int[] { 0, 1, 2, 2, 3, 3, 3, 4, 5 }, 6)]
+        [InlineData(new int[] { 1, 1, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6 }, 6)]
+        public void RemoveDuplicateFromSortedArray_Using_BruteForce_WithSimpleLoop_Should_Run_Successfully(int[] arr, int expectedResult)
+        {
+            //arrange
+
+
+            //act
+            int result = RemoveDuplicatesFromSortedArray.CountDuplicate_SortedArray_Optimization(arr);
+
+            //assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void CountDuplicates_And_Replace_RepeatedElements_Should_Run_Successfully() 
+        {
+            //arrange
+            int[] arr = { 1, 1, 1, 2, 2, 3, 3, 4 };
+            //act
+            int result = RemoveDuplicatesFromSortedArray.CountDuplicates_And_Replace_RepeatedElements(arr);
+            //assert
+            Assert.Equal(4, result);
+        }
+
+        [Fact]
+        public void RemoveDuplicates_CountDuplicate_Best_Solution_Should_Run_Successfully()
+        {
+            // Arrange
+            int[] arr = { 1, 1, 1, 2, 2, 3, 3, 4 };
+
+            // Act
+            int uniqueCount =
+                RemoveDuplicatesFromSortedArray
+                    .RemoveDuplicates_CountDuplicate_Best_Solution(arr);
+
+            // Assert
+            Assert.Equal(4, uniqueCount);
+
+            int[] expectedUniqueValues = { 1, 2, 3, 4 };
+
+            Assert.Equal(
+                expectedUniqueValues,
+                arr.Take(uniqueCount).ToArray());
+        }
+
     }
 }
