@@ -237,5 +237,32 @@ namespace DSA.Arrays.Tests
                 arr.Take(uniqueCount).ToArray());
         }
 
+        [Fact]
+        public void MaxProfit_BruteForce() 
+        {
+            //arrange
+            int[] arr = { 7, 1, 5, 3, 6, 4 };
+
+            //act
+            int result = MaxProfit_BestTimeToBuyAndSell.MaxProfit_BruteForce(arr);
+
+            //assert
+            Assert.Equal(5, result);
+        }
+
+        [Fact]
+        public void MaxProfit_Optimized()
+        {
+            //arrange
+            int[] arr = { 7, 1, 5, 3, 6, 4 };
+
+            //act
+            int result = MaxProfit_BestTimeToBuyAndSell.MaxProfit_Optimized(arr);
+
+            //assert
+            Assert.Equal(5, result);
+        }
+
+
     }
 }
