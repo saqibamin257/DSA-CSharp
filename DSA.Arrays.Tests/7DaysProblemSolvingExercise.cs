@@ -264,5 +264,92 @@ namespace DSA.Arrays.Tests
         }
 
 
+
+        [Fact]
+        public void MaximumSumSubarrayOfSize_3_Should_Run_Successfully()
+        {
+            //arrange
+            int[] arr = { 2, 1, 5, 1, 3, 2 };
+            int k = 3;
+
+            //act
+            int maxSum = MaximumSumSubarrayOfSizeK.MaxSum_For_WindowSize_3(arr, k);
+            //assert
+
+            Assert.Equal(9, maxSum);
+        }
+
+        [Fact]
+        public void MaximumSumSubarrayOfSizeK_Should_Run_Successfully()
+        {
+            //arrange
+            int[] arr = {2, 1, 5, 1, 3, 2};
+            int k = 3;
+
+            //act
+            //int maxSum = MaximumSumSubarrayOfSizeK.MaxSum_For_WindowSize_k(arr, k);
+            int maxSum = MaximumSumSubarrayOfSizeK.MaxSum_For_WindowSize_k_Optimized(arr, k);
+            
+            //assert
+
+            Assert.Equal(9, maxSum);
+        }
+
+
+        [Fact]
+        public void ProductOfArray_Should_Run_Successfully() 
+        {
+            //arrange
+            
+            int[] inputArray = { 1, 2, 3, 4 };
+            int[] outputArray = { 24, 12, 8, 6 };
+
+            //act
+            //int[] resultArray = ProductOfArrayExceptSelf.Product(inputArray);
+            int[] resultArray = ProductOfArrayExceptSelf.Product_By_BruteForce(inputArray);
+
+            //assert
+
+            Assert.Equal(outputArray, resultArray);
+        }
+
+
+
+        [Fact]
+        public void ProductOfArray_Optimized_Should_Run_Successfully()
+        {
+            //arrange
+
+            int[] inputArray = { 1, 2, 3, 4 };
+            int[] outputArray = { 24, 12, 8, 6 };
+
+            //act
+            //int[] resultArray = ProductOfArrayExceptSelf.Product(inputArray);
+            int[] resultArray = ProductOfArrayExceptSelf.Product_Optimized(inputArray);
+
+            //assert
+
+            Assert.Equal(outputArray, resultArray);
+        }
+
+
+        [Fact]
+        public void FindProduct_Except_itself_Optimized_Cleaned_Should_Run_Successfully()
+        {
+            //arrange
+
+            int[] inputArray = { 1, 2, 3, 4 };
+            int[] outputArray = { 24, 12, 8, 6 };
+
+            //act
+            //int[] resultArray = ProductOfArrayExceptSelf.Product(inputArray);
+            int[] resultArray = ProductOfArrayExceptSelf.FindProduct_Except_itself_Optimized_Cleaned(inputArray);
+
+            //assert
+
+            Assert.Equal(outputArray, resultArray);
+        }
+
+
     }
 }
