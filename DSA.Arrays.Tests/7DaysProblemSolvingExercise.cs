@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static DSA.Arrays._7DaysProblemSolvingExercise.KadaneAlgorithm_FindContigousSubArrayOfLargestSum;
 
 namespace DSA.Arrays.Tests
 {
@@ -348,6 +349,72 @@ namespace DSA.Arrays.Tests
             //assert
 
             Assert.Equal(outputArray, resultArray);
+        }
+
+        [Fact]
+        public void Kadane_ContigousSubArrayOfLargestSum_BruteForce_Should_Run_Successfully() 
+        {
+            //arrange
+
+            int[] inputArray = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+            int expectedSum = 6;
+            int[] expectedSubArray = { 4, -1, 2, 1};
+            //int[] outputArray = { 24, 12, 8, 6 };
+
+            //act
+            //int[] resultArray = ProductOfArrayExceptSelf.Product(inputArray);
+            KadaneAlgorithmResponse response = KadaneAlgorithm_FindContigousSubArrayOfLargestSum.ContigousSubArrayOfLargestSum_BruteForce(inputArray);
+
+            //assert
+
+            Assert.Equal(expectedSum, response.MaxSum);
+            Assert.Equal(expectedSubArray, response.SubArray);
+        }
+
+
+
+
+        [Fact]
+        public void Kadane_ContigousSubArrayOfLargestSum_Optimized_Should_Run_Successfully()
+        {
+            //arrange
+
+            int[] inputArray = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+            int expectedSum = 6;
+            int[] expectedSubArray = { 4, -1, 2, 1 };
+            //int[] outputArray = { 24, 12, 8, 6 };
+
+            //act
+            //int[] resultArray = ProductOfArrayExceptSelf.Product(inputArray);
+            //KadaneAlgorithmResponse response = KadaneAlgorithm_FindContigousSubArrayOfLargestSum.ContigousSubArrayOfLargestSum_BruteForce(inputArray);
+            int result = KadaneAlgorithm_FindContigousSubArrayOfLargestSum.MaxSum_By_Kadane_Algorithm_Optimized(inputArray);
+
+
+
+            //assert
+            Assert.Equal(expectedSum, result);
+           
+        }
+
+
+        [Fact]
+        public void ContigousSubArrayWithLargestSum_Optimized_Should_Run_Successfully()
+        {
+            //arrange
+
+            int[] inputArray = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+            int expectedSum = 6;
+            int[] expectedSubArray = { 4, -1, 2, 1 };
+            //int[] outputArray = { 24, 12, 8, 6 };
+
+            //act
+            //int[] resultArray = ProductOfArrayExceptSelf.Product(inputArray);
+            KadaneAlgorithmResponse response = KadaneAlgorithm_FindContigousSubArrayOfLargestSum.ContigousSubArrayWithLargestSum_Optimized(inputArray);
+
+            //assert
+
+            Assert.Equal(expectedSum, response.MaxSum);
+            Assert.Equal(expectedSubArray, response.SubArray);
         }
 
 
