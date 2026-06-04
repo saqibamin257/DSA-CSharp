@@ -67,21 +67,6 @@ namespace DSA.Arrays._7DaysProblemSolvingExercise
         //                 7                 4-5=-1                      4
         //                 8                 -1+4=3                      4 
 
-
-
-        public static int MaxSum_By_Kadane_Algorithm_Optimized(int[] arr) 
-        {
-            int maxSum = arr[0];
-            int currentSum =arr[0];
-            for (int i = 1; i < arr.Length; i++) 
-            {
-                currentSum = Math.Max(arr[i], currentSum + arr[i]);
-                maxSum = Math.Max(currentSum, maxSum);
-            }
-            return maxSum;
-        }
-
-
         public static KadaneAlgorithmResponse ContigousSubArrayWithLargestSum_Optimized(int[] arr)
         {
             int maxSum = arr[0];
@@ -95,19 +80,19 @@ namespace DSA.Arrays._7DaysProblemSolvingExercise
             //sum =6
             //subArray = {4,-1,2,1}
 
-            for (int i = 1; i < arr.Length; i++) 
+            for (int i = 1; i < arr.Length; i++)
             {
-                if (arr[i] > currentSum + arr[i]) 
+                if (arr[i] > currentSum + arr[i])
                 {
                     currentSum = arr[i];
                     currentStartIndex = i;
                 }
-                else 
+                else
                 {
                     currentSum += arr[i];
                 }
 
-                if (currentSum > maxSum) 
+                if (currentSum > maxSum)
                 {
                     maxSum = currentSum;
                     bestStartIndex = currentStartIndex;
@@ -123,6 +108,150 @@ namespace DSA.Arrays._7DaysProblemSolvingExercise
                           .Take(bestEndIndex - bestStartIndex + 1)
                           .ToArray()
             };
+        }
+
+        public static int MaxSum_By_Kadane_Algorithm_Optimized(int[] arr) 
+        {
+            int maxSum = arr[0];
+            int currentSum =arr[0];
+            for (int i = 1; i < arr.Length; i++) 
+            {
+                currentSum = Math.Max(arr[i], currentSum + arr[i]);
+                maxSum = Math.Max(currentSum, maxSum);
+            }
+            return maxSum;
+        }
+
+
+
+
+
+        public static KadaneAlgorithmResponse GetSubArrayWithLargestSum(int[] arr)
+        {
+            // If current element alone is better than
+            // extending the current subarray,
+            // start a new subarray from current index.
+
+
+            if (arr is null || arr.Length == 0)
+                throw new ArgumentException("array can not be null or empty");
+
+            int maxSum = arr[0];
+            int currentSum = arr[0];
+            int bestStartIndex = 0;
+            int bestEndIndex = 0;
+            int currentStartIndex = 0;
+
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] > currentSum + arr[i])
+                {
+                    currentSum = arr[i];
+                    currentStartIndex = i;
+                }
+                else
+                {
+                    currentSum += arr[i];
+                }
+
+                if (currentSum > maxSum)
+                {
+                    maxSum = currentSum;
+                    bestStartIndex = currentStartIndex;
+                    bestEndIndex = i;
+                }
+            }
+
+            return new KadaneAlgorithmResponse
+            {
+                MaxSum = maxSum,
+                SubArray = arr.Skip(bestStartIndex)
+                            .Take(bestEndIndex - bestStartIndex + 1)
+                            .ToArray()
+            };
+
+            // Dry Run [4, -1, 2, 1]
+
+            // i          (arr[i] > currentSum + arr[i])          currentSum         currentIndex     currentSum > maxSum     maxSum         bestStartIndex       bestEndIndex
+
+            // 0                                                    4                   0                                        4                   0                 0
+
+            // 1              false                                 4-1=3               0                   false                4                   0                 0
+
+            // 2              false                                 3+2=5               0                    true                5                   0                 2
+
+            // 3              false                                  5+1=6              0                     true               6                   0                 3     
+
+            //output
+            //maxSum = 6
+            //startIndex=0      endIndex=3
+            //subArray [4,-1,2,1]
+
+            // ------------------------- Very Important Concept ---------------------------------//
+
+
+            // Test Case to fail logic using only bestStartIndex without CurrentStart Index
+            //logic
+
+            //for (int i = 1; i < arr.Length; i++)
+            //{
+            //    if (arr[i] > currentSum + arr[i])
+            //    {
+            //        currentSum = arr[i];
+            //        bestStartIndex = i;
+            //    }
+            //    else
+            //    {
+            //        currentSum += arr[i];
+            //    }
+
+            //    if (currentSum > maxSum)
+            //    {
+            //        maxSum = currentSum;
+            //        //bestStartIndex = currentStartIndex;
+            //        bestEndIndex = i;
+            //    }
+            //}
+
+
+
+
+            // input { -5, -2, -8 },
+            // output : -2,
+            // subArray: { -2 }
+
+            // i          (arr[i] > currentSum + arr[i])          currentSum     bestStartIndex   currentSum > maxSum      maxSum         bestEndIndex
+
+            //0                                                      -5            0                                       -5                0
+            //1                  true                                -2            1                   true                -2                1
+            //2                  true                                -8            2                   false               -2                1           
+
+            //This is impossible to create array whose startIndex > endIndex
+
+
+            // Important:
+            //
+            // currentStartIndex tracks the start of the CURRENT candidate subarray.
+            //
+            // bestStartIndex tracks the start of the BEST subarray found so far.
+            //
+            // They cannot be merged because a new candidate subarray may start
+            // without becoming the best solution.
+            //
+            // Example:
+            // [-5,-2,-8]
+            //
+            // At index 2 a new candidate starts,
+            // but maxSum remains -2 from index 1.
+            //
+            // Using only bestStartIndex would produce:
+            // startIndex = 2
+            // endIndex = 1
+            //
+            // which is an invalid subarray.
+
+
+
         }
     }
 }

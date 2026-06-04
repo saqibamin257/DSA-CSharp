@@ -175,17 +175,17 @@ namespace DSA.Arrays.Tests
         }
 
         [Theory]
-        [InlineData(new int[] {1,1,2,2,3,3,3,4,5 },5)]
+        [InlineData(new int[] { 1, 1, 2, 2, 3, 3, 3, 4, 5 }, 5)]
         [InlineData(new int[] { 0, 1, 2, 2, 3, 3, 3, 4, 5 }, 6)]
-        [InlineData(new int[] { 1, 1, 2, 2, 3, 3, 3, 4, 5,5,6,6}, 6)]
-        public void RemoveDuplicateFromSortedArray_Using_HashSet_Should_Run_Successfully(int[] arr,int expectedResult) 
+        [InlineData(new int[] { 1, 1, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6 }, 6)]
+        public void RemoveDuplicateFromSortedArray_Using_HashSet_Should_Run_Successfully(int[] arr, int expectedResult)
         {
             //arrange
-            
+
 
             //act
             int result = RemoveDuplicatesFromSortedArray.CountDuplicates_By_HashSet(arr);
-            
+
             //assert
             Assert.Equal(expectedResult, result);
         }
@@ -207,7 +207,7 @@ namespace DSA.Arrays.Tests
         }
 
         [Fact]
-        public void CountDuplicates_And_Replace_RepeatedElements_Should_Run_Successfully() 
+        public void CountDuplicates_And_Replace_RepeatedElements_Should_Run_Successfully()
         {
             //arrange
             int[] arr = { 1, 1, 1, 2, 2, 3, 3, 4 };
@@ -239,7 +239,7 @@ namespace DSA.Arrays.Tests
         }
 
         [Fact]
-        public void MaxProfit_BruteForce() 
+        public void MaxProfit_BruteForce()
         {
             //arrange
             int[] arr = { 7, 1, 5, 3, 6, 4 };
@@ -284,13 +284,13 @@ namespace DSA.Arrays.Tests
         public void MaximumSumSubarrayOfSizeK_Should_Run_Successfully()
         {
             //arrange
-            int[] arr = {2, 1, 5, 1, 3, 2};
+            int[] arr = { 2, 1, 5, 1, 3, 2 };
             int k = 3;
 
             //act
             //int maxSum = MaximumSumSubarrayOfSizeK.MaxSum_For_WindowSize_k(arr, k);
             int maxSum = MaximumSumSubarrayOfSizeK.MaxSum_For_WindowSize_k_Optimized(arr, k);
-            
+
             //assert
 
             Assert.Equal(9, maxSum);
@@ -298,10 +298,10 @@ namespace DSA.Arrays.Tests
 
 
         [Fact]
-        public void ProductOfArray_Should_Run_Successfully() 
+        public void ProductOfArray_Should_Run_Successfully()
         {
             //arrange
-            
+
             int[] inputArray = { 1, 2, 3, 4 };
             int[] outputArray = { 24, 12, 8, 6 };
 
@@ -352,13 +352,13 @@ namespace DSA.Arrays.Tests
         }
 
         [Fact]
-        public void Kadane_ContigousSubArrayOfLargestSum_BruteForce_Should_Run_Successfully() 
+        public void Kadane_ContigousSubArrayOfLargestSum_BruteForce_Should_Run_Successfully()
         {
             //arrange
 
             int[] inputArray = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
             int expectedSum = 6;
-            int[] expectedSubArray = { 4, -1, 2, 1};
+            int[] expectedSubArray = { 4, -1, 2, 1 };
             //int[] outputArray = { 24, 12, 8, 6 };
 
             //act
@@ -393,7 +393,7 @@ namespace DSA.Arrays.Tests
 
             //assert
             Assert.Equal(expectedSum, result);
-           
+
         }
 
 
@@ -417,6 +417,80 @@ namespace DSA.Arrays.Tests
             Assert.Equal(expectedSubArray, response.SubArray);
         }
 
+
+        public static IEnumerable<object[]> KadaneTestData =>
+                                            new List<object[]>
+                                            {
+                                                // Classic example
+                                                //new object[]
+                                                //{
+                                                //    new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 },
+                                                //    6,
+                                                //    new int[] { 4, -1, 2, 1 }
+                                                //},
+
+                                                //// All positive numbers
+                                                //new object[]
+                                                //{
+                                                //    new int[] { 1, 2, 3, 4 },
+                                                //    10,
+                                                //    new int[] { 1, 2, 3, 4 }
+                                                //},
+
+                                                // All negative numbers
+                                                new object[]
+                                                {
+                                                    new int[] { -5, -2, -8 },
+                                                    -2,
+                                                    new int[] { -2 }
+                                                },
+
+                                                // Single element
+                                                //new object[]
+                                                //{
+                                                //    new int[] { 5 },
+                                                //    5,
+                                                //    new int[] { 5 }
+                                                //},
+
+                                                //// Restart subarray scenario
+                                                //new object[]
+                                                //{
+                                                //    new int[] { 1, -10, 5, 6 },
+                                                //    11,
+                                                //    new int[] { 5, 6 }
+                                                //}
+                                            };
+
+        [Theory]
+        [MemberData(nameof(KadaneTestData))]
+        public void GetSubArrayWithLargestSum_Should_Return_Correct_Result(int[] inputArray,int expectedMaxSum,int[] expectedSubArray)
+        {
+            // Act
+            KadaneAlgorithmResponse result =
+                KadaneAlgorithm_FindContigousSubArrayOfLargestSum
+                    .GetSubArrayWithLargestSum(inputArray);
+
+            // Assert
+            Assert.Equal(expectedMaxSum, result.MaxSum);
+            Assert.Equal(expectedSubArray, result.SubArray);
+        }
+
+        [Fact]
+        public void MergeArray_BruteForce_Should_Run_Successfully() 
+        {
+            //arrange
+            int[] firstArray = { 1, 3, 4 };
+            int[] secondArray = { 1, 2, 5, 6, 7, 8 };
+            int[] expectedArray = { 1, 1, 2, 3, 4, 5, 6, 7, 8 };
+
+
+
+            //act
+            int[] resultArray = MergeTwoSortedArray.MergeArray(firstArray, secondArray);
+            //assert
+            Assert.Equal(expectedArray, resultArray);
+        }
 
     }
 }
