@@ -477,7 +477,7 @@ namespace DSA.Arrays.Tests
         }
 
         [Fact]
-        public void MergeArray_BruteForce_Should_Run_Successfully() 
+        public void MergeArray_BruteForce_Should_Run_Successfully()
         {
             //arrange
             int[] firstArray = { 1, 3, 4 };
@@ -487,7 +487,51 @@ namespace DSA.Arrays.Tests
 
 
             //act
-            int[] resultArray = MergeTwoSortedArray.MergeArray(firstArray, secondArray);
+            int[] resultArray = MergeTwoSortedArray.MergeSortArray_BruteForce(firstArray, secondArray);
+            //assert
+            Assert.Equal(expectedArray, resultArray);
+        }
+        [Fact]
+        public void MergeSortArray_Optimized_Should_Run_Successfully()
+        {
+            //arrange
+            int[] firstArray = { 1, 3, 4 };
+            int[] secondArray = { 1, 2, 5, 6, 7, 8 };
+            int[] expectedArray = { 1, 1, 2, 3, 4, 5, 6, 7, 8 };
+
+
+
+            //act
+            int[] resultArray = MergeTwoSortedArray.MergeSortArray_Optimized(firstArray, secondArray);
+            //assert
+            Assert.Equal(expectedArray, resultArray);
+        }
+
+        [Fact]
+        public void SortedSquare_BruteForce_Should_Run_Successfully()
+        {
+            //arrange
+            int[] inputArray = {-4,-1,0,3,10};
+            int[] expectedArray = { 0, 1, 9, 16, 100 };
+
+            //act
+            int[] resultArray = SortedSquaresOfNumbersInArray.SortedSquares_BruteForce(inputArray);
+
+            //assert
+            Assert.Equal(expectedArray, resultArray);
+        }
+
+
+        [Fact]
+        public void SortedSquare_Optimized_Should_Run_Successfully()
+        {
+            //arrange
+            int[] inputArray = { -4, -1, 0, 3, 10 };
+            int[] expectedArray = { 0, 1, 9, 16, 100 };
+
+            //act
+            int[] resultArray = SortedSquaresOfNumbersInArray.SortedSquares_Optimized(inputArray);
+
             //assert
             Assert.Equal(expectedArray, resultArray);
         }
