@@ -536,5 +536,40 @@ namespace DSA.Arrays.Tests
             Assert.Equal(expectedArray, resultArray);
         }
 
+
+
+        [Theory]
+        [InlineData("aabbaa", "aaaabb", true)]
+        //[InlineData("silent", "listen", true)]
+        //[InlineData("aab", "bab", false)]
+        //[InlineData("car", "cats", false)]
+        public void ValidAnagram_By_Two_Dictionaries_Should_Run_Successfully(string firstString, string secondString, bool expectedResult)
+        {
+            //arrange            
+
+            //act
+            bool result = ValidAnagram.isValid_By_TwoDictionaries(firstString, secondString);
+
+            //assert
+            Assert.Equal(expectedResult, result);
+        }
+
+
+        [Theory]
+        [InlineData("aabbaa", "aaaabb",true)]
+        //[InlineData("silent", "listen", true)]
+        //[InlineData("aab", "bab", false)]
+        //[InlineData("car", "cats", false)]
+        public void ValidAnagram_Optimized_Should_Run_Successfully(string firstString,string secondString,bool expectedResult) 
+        {
+            //arrange            
+
+            //act
+            bool result = ValidAnagram.isValid_Optimized(firstString, secondString);
+
+            //assert
+            Assert.Equal(expectedResult, result);
+        }
+
     }
 }
