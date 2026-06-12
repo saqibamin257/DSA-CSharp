@@ -570,6 +570,18 @@ namespace DSA.Arrays.Tests
             //assert
             Assert.Equal(expectedResult, result);
         }
+        [Fact]
+        public void FirstNonRepeatingCharacter_Should_Run_Successfully() 
+        {
+            //arrange
+            string str = "leetcode";
+            int expectedIndex = 0;
+            
+            //act
+            int result = FirstNonRepeatingCharacter.FindIndexOfNonRepeatingCharacter(str);
 
+            //assert
+            Assert.Equal(expectedIndex, result);
+        }
     }
 }
